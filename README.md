@@ -1,2 +1,2 @@
-# alx-higher_level_programming
-ALX high level programming
+# ALX-higher level programming
+This repository contains projects from the ALX higher level programming course
