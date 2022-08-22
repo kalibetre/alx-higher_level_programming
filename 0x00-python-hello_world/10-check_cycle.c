@@ -2,28 +2,22 @@
 
 /**
  * check_cycle - checks a list for a cycle
+ * using the floyd's cycle finding algorithm
  * @list: the list
  *
  * Return: returns 0 if there is no cycle else 1
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *node = list, *prev = list;
+	listint_t *fast_p = list, *slow_p = list;
 
-	while (node != NULL && node->next != NULL)
+	while (fast_p != NULL && fast_p->next != NULL)
 	{
-		node = node->next;
-		prev = list;
+		fast_p = fast_p->next->next;
+		slow_p = slow_p->next;
 
-		if (node->next == node)
+		if (fast_p == slow_p)
 			return (1);
-
-		while (prev != NULL && prev != node && node != NULL)
-		{
-			if (node->next == prev)
-				return (1);
-			prev = prev->next;
-		}
 	}
 	return (0);
 }
