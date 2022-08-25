@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-alphas = [*range(65, 91)]
-print((len(alphas)*"{:c}").format(*alphas))
+import string
+print(string.ascii_uppercase)
