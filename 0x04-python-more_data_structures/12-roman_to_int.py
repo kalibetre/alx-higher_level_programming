@@ -36,8 +36,8 @@ def roman_to_int(roman_string):
         "MMM": 3000
     }
 
-    if roman_number in ROMANS:
-        return ROMANS.get(roman_number)
+    if roman_string in ROMANS:
+        return ROMANS.get(roman_string)
 
     num = 0
     i = 0
@@ -45,26 +45,10 @@ def roman_to_int(roman_string):
         if ch in ROMANS:
             num += ROMANS.get(ch)
             i += len(ch)
-            if i >= len(roman_number):
+            if i >= len(roman_string):
                 break
-            ch = roman_number[i]
+            ch = roman_string[i]
         else:
             ch += ch
 
     return num
-
-
-roman_number = "X"
-print("{} = {}".format(roman_number, roman_to_int(roman_number)))
-
-roman_number = "VII"
-print("{} = {}".format(roman_number, roman_to_int(roman_number)))
-
-roman_number = "IX"
-print("{} = {}".format(roman_number, roman_to_int(roman_number)))
-
-roman_number = "LXXXVII"
-print("{} = {}".format(roman_number, roman_to_int(roman_number)))
-
-roman_number = "DCCVII"
-print("{} = {}".format(roman_number, roman_to_int(roman_number)))
