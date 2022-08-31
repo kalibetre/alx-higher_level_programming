@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-def roman_to_int(roman_string):
+def roman_to_int2(roman_string):
     if roman_string is None or not isinstance(roman_string, str):
         return 0
 
@@ -30,9 +30,6 @@ def roman_to_int(roman_string):
 
     for key in ROMAN_ODDITIES:
         roman_string = roman_string.replace(key, ROMAN_ODDITIES.get(key))
-
-    if roman_string in ROMANS:
-        return ROMANS.get(roman_string)
 
     num = 0
     i = 0
