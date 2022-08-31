@@ -3,38 +3,33 @@ def roman_to_int(roman_string):
     if roman_string is None or not isinstance(roman_string, str):
         return 0
 
+    ROMAN_ODDITIES = {
+        "IV": "P",
+        "IX": "Q",
+        "XL": "R",
+        "XC": "S",
+        "CD": "T",
+        "CM": "U",
+    }
+
     ROMANS = {
         "I": 1,
-        "II": 2,
-        "III": 3,
-        "IV": 4,
+        "P": 4,
         "V": 5,
-        "VI": 6,
-        "VII": 7,
-        "VIII": 8,
-        "IX": 9,
+        "Q": 9,
         "X": 10,
-        "XX": 20,
-        "XXX": 30,
-        "XL": 40,
+        "R": 40,
         "L": 50,
-        "LX": 60,
-        "LXX": 70,
-        "LXXX": 80,
-        "XC": 90,
+        "S": 90,
         "C": 100,
-        "CC": 200,
-        "CCC": 300,
-        "CD": 400,
+        "T": 400,
         "D": 500,
-        "DC": 600,
-        "DCC": 700,
-        "DCCC": 800,
-        "CM": 900,
+        "U": 900,
         "M": 1000,
-        "MM": 2000,
-        "MMM": 3000
     }
+
+    for key in ROMAN_ODDITIES:
+        roman_string = roman_string.replace(key, ROMAN_ODDITIES.get(key))
 
     if roman_string in ROMANS:
         return ROMANS.get(roman_string)
