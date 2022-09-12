@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-from dis import dis
-
-
 def magic_calculation(a, b):
     result = 0
 
@@ -16,6 +13,3 @@ def magic_calculation(a, b):
             break
 
     return result
-
-
-dis(magic_calculation)
