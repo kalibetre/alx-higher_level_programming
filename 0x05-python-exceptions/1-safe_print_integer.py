@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 def safe_print_integer(value):
     try:
-        if int(value) == value:
-            print("{:d}".format(int(value)))
-            return True
-        raise TypeError
+        print("{:d}".format(value))
     except Exception:
         return False
