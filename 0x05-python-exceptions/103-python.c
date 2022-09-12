@@ -13,7 +13,7 @@ void print_python_bytes(PyObject *p)
 	if (PyBytes_Check(p))
 	{
 		size = PyBytes_Size(p);
-		s = PyBytes_AsString(p);
+		s = ((PyBytesObject *)p)->ob_sval;
 
 		printf("  size: %ld\n", size);
 		printf("  trying string: %s\n", s);
