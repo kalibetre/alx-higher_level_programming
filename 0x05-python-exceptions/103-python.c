@@ -1,5 +1,4 @@
 #include <Python.h>
-#include <float.h>
 
 /**
  * print_python_bytes - prints bytes of python object
