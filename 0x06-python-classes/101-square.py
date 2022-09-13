@@ -83,14 +83,7 @@ class Square:
 
     def my_print(self):
         """prints the square with a #"""
-        if (self.size == 0):
-            print("")
-        else:
-            for _ in range(self.position[1]):
-                print("")
-            for _ in range(self.size):
-                print(*[' ' for _ in range(self.position[0])], sep='', end='')
-                print(*["#" for _ in range(self.size)], sep='')
+        return str(self)
 
     def __str__(self):
         """returns a string representation of square class
@@ -103,7 +96,7 @@ class Square:
         else:
             rows = []
             if self.position[1] > 0:
-                rows.append("".join(["\n" for _ in range(self.position[1])]))
+                rows.append("\n".join(["" for _ in range(self.position[1])]))
 
             for _ in range(self.size):
                 row = []
@@ -112,3 +105,12 @@ class Square:
                 rows.append("".join(row))
 
             return "\n".join(rows)
+
+
+my_square = Square(5, (0, 0))
+print(my_square)
+
+print("--")
+
+my_square = Square(5, (4, 1))
+print(my_square)
