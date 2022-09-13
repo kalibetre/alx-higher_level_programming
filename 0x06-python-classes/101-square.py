@@ -91,17 +91,16 @@ class Square:
         Returns:
             str: the string representation
         """
+        sq_str = ""
         if (self.size == 0):
-            return ""
-        else:
-            rows = []
-            if self.position[1] > 0:
-                rows.append("\n".join(["" for _ in range(self.position[1])]))
+            return sq_str
 
-            for _ in range(self.size):
-                row = []
-                row += ['-' for _ in range(self.position[0])]
-                row += ["#" for _ in range(self.size)]
-                rows.append("".join(row))
-
-            return "\n".join(rows)
+        sq_str += "\n" * self.position[1]
+        rows = []
+        for _ in range(self.size):
+            row_str = ""
+            row_str += ' ' * self.position[0]
+            row_str += "#" * self.size
+            rows.append(row_str)
+        sq_str += "\n".join(rows)
+        return sq_str
