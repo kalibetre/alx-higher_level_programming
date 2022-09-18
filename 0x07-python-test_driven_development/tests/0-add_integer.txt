@@ -1,0 +1,60 @@
+=========================================
+Usage of 0-add_integer.py
+=========================================
+
+This module contains a simple function ``add_integer(a, b)`` 
+that returns the sum its arguments the arguments must either 
+be an int or float
+
+    >>> add_integer = __import__("0-add_integer").add_integer
+
+Numbers
+=======
+Adds to Numbers that are either int or float
+
+    >>> add_integer(1, 2)
+    3
+
+    >>> add_integer(1.4, 3.3)
+    4
+
+And The value of b defaults to 98
+
+    >>> add_integer(-1)
+    97
+
+The return type is int
+
+    >>> type(add_integer(3)) is int
+    True
+
+Invalid arguments
+=================
+Raises TypeError if any of its arguments are not int or float
+
+::
+
+    >>> add_integer("3d", 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    >>> add_integer(True, 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    >>> add_integer(3, True)
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+    >>> add_integer("3d", "5")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
