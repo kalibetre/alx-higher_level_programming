@@ -8,8 +8,8 @@ be an int or float
 
     >>> add_integer = __import__("0-add_integer").add_integer
 
-Numbers
-=======
+Normal Usage
+============
 Adds to Numbers that are either int or float
 
     >>> add_integer(1, 2)
