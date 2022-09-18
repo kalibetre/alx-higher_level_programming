@@ -10,7 +10,7 @@ be an int or float
 
 Normal Usage
 ============
-Adds to Numbers that are either int or float
+Adds two Numbers that are either int or float
 
     >>> add_integer(1, 2)
     3
