@@ -6,6 +6,21 @@ This Module contains an definition for matrix_divided function
 
 
 def matrix_divided(matrix, div):
+    """divides a matrix of numbers by a divisor
+
+    Args:
+        matrix (list(list(int, float))): list of list of int/float
+        div (int, float): the divisor
+
+    Raises:
+        TypeError: matrix must of list of lists of int/floats
+        TypeError: each row of the matrix must have same size
+        TypeError: div must be a number
+        ZeroDivisionError: the divisor can not be zero
+
+    Returns:
+        list(list(float)): the new matrix with rounded values
+    """
     type_er_msg = "matrix must be a matrix (list of lists) of integers/floats"
 
     if type(matrix) is not list:
