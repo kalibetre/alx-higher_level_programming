@@ -1,0 +1,179 @@
+=========================================
+Usage of 5-text_indentation.py
+=========================================
+
+This module contains a the function ``text_indentation(text)``
+prints a text with 2 new lines after each of these characters: ., ? and :
+
+    >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Doc String Test
+===============
+Module docstring:
+    >>> m = __import__("5-text_indentation").__doc__
+    >>> len(m) > 1
+    True
+
+Function docstring:
+    >>> f = __import__("5-text_indentation").text_indentation.__doc__
+    >>> len(f) > 1
+    True
+
+Normal Usage
+============
+
+    >>> text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres.""")
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <BLANKLINE> 
+    Quonam modo?
+    <BLANKLINE>
+    Utrum igitur tibi litteram videor an totas paginas commovere?
+    <BLANKLINE>
+    Non autem hoc:
+    <BLANKLINE>
+    igitur ne illud quidem.
+    <BLANKLINE>
+    Fortasse id optimum, sed ubi illud:
+    <BLANKLINE>
+    Plus semper voluptatis?
+    <BLANKLINE>
+    Teneo, inquit, finem illi videri nihil dolere.
+    <BLANKLINE>
+    Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+    <BLANKLINE>
+    Si id dicis, vicimus.
+    <BLANKLINE>
+    Inde sermone vario sex illa a Dipylo stadia confecimus.
+    <BLANKLINE>
+    Sin aliud quid voles, postea.
+    <BLANKLINE>
+    Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+    <BLANKLINE>
+    Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres.
+    <BLANKLINE>
+
+    >>> text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres""")
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <BLANKLINE>
+    Quonam modo?
+    <BLANKLINE>
+    Utrum igitur tibi litteram videor an totas paginas commovere?
+    <BLANKLINE>
+    Non autem hoc:
+    <BLANKLINE>
+    igitur ne illud quidem.
+    <BLANKLINE>
+    Fortasse id optimum, sed ubi illud:
+    <BLANKLINE>
+    Plus semper voluptatis?
+    <BLANKLINE>
+    Teneo, inquit, finem illi videri nihil dolere.
+    <BLANKLINE>
+    Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+    <BLANKLINE>
+    Si id dicis, vicimus.
+    <BLANKLINE>
+    Inde sermone vario sex illa a Dipylo stadia confecimus.
+    <BLANKLINE>
+    Sin aliud quid voles, postea.
+    <BLANKLINE>
+    Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+    <BLANKLINE>
+    Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+    >>> text_indentation("      ")
+
+    >>> text_indentation("   Lorem ipsum.   dolor:   ")
+    Lorem ipsum.
+    <BLANKLINE>
+    dolor:
+    <BLANKLINE>
+
+    >>> text_indentation(" . ? : ")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+    >>> text_indentation("Hello")
+    Hello
+
+    >>> text_indentation(" \n Hello. Whatcha up to?")
+    <BLANKLINE>
+    Hello.
+    <BLANKLINE>
+    Whatcha up to?
+    <BLANKLINE>
+
+    >>> text_indentation("Hello \n . How are you?")
+    Hello
+    .
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+
+    >>> text_indentation("Hello, how are you?\n")
+    Hello, how are you?
+    <BLANKLINE>
+    <BLANKLINE>
+
+    >>> text_indentation("Hello\n\n")
+    Hello
+    <BLANKLINE>
+
+    >>> text_indentation("   \n")
+    <BLANKLINE>
+
+    >>> text_indentation("   \n   ")
+    <BLANKLINE>
+
+    >>> text_indentation('\n.\n?\n:')
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+    >>> text_indentation("Clearly. When? But do you know about:    that")
+    Clearly.
+    <BLANKLINE>
+    When?
+    <BLANKLINE>
+    But do you know about:
+    <BLANKLINE>
+    that
+
+Invalid arguments
+=================
+text must be an string
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    >>> text_indentation(True)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Argument Count Test
+===================
+
+Extra args:
+    >>> text_indentation("", "")
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+Too few args
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
