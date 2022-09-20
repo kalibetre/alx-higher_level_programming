@@ -7,6 +7,18 @@ that prints My name is <first name> <last name>
 
     >>> say_my_name = __import__("3-say_my_name").say_my_name
 
+Doc String Test
+===============
+Module docstring:
+    >>> m = __import__("3-say_my_name").__doc__
+    >>> len(m) > 1
+    True
+
+Function docstring:
+    >>> f = __import__("3-say_my_name").say_my_name.__doc__
+    >>> len(f) > 1
+    True
+
 Normal Usage
 ============
 

@@ -7,6 +7,18 @@ that divides the given matrix by a divider div
 
     >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
 
+Doc String Test
+===============
+Module docstring:
+    >>> m = __import__("2-matrix_divided").__doc__
+    >>> len(m) > 1
+    True
+
+Function docstring:
+    >>> f = __import__("2-matrix_divided").matrix_divided.__doc__
+    >>> len(f) > 1
+    True
+
 Normal Usage
 ============
 Given a matrix of integer numbers it shall divide by the given divider
