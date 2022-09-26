@@ -1,5 +1,5 @@
 =========================================
-Usage of 1-my_list.py
+Usage of 7-base_geometry.py
 =========================================
 
 This module contains the class ``BaseGeometry``
