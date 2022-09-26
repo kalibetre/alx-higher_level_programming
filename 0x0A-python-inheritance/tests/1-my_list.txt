@@ -1,0 +1,76 @@
+=========================================
+Usage of 1-my_list.py
+=========================================
+
+This module contains the class ``MyList`` that is a subclass of ``list``
+
+    >>> MyList = __import__("1-my_list").MyList
+
+Doc String Test
+===============
+Module docstring:
+    >>> m = __import__("1-my_list").__doc__
+    >>> len(m) > 1
+    True
+
+Class docstring:
+    >>> c = __import__("1-my_list").MyList.__doc__
+    >>> len(c) > 1
+    True
+
+Function docstring:
+    >>> f = __import__("1-my_list").MyList.print_sorted.__doc__
+    >>> len(f) > 1
+    True
+
+
+
+Normal Usage
+============
+List with elements
+    >>> l1 = MyList()
+    >>> l1.append(1)
+    >>> l1.append(4)
+    >>> l1.append(2)
+    >>> l1.append(3)
+    >>> l1.append(-1)
+    >>> l1.append(5)
+    >>> print(l1)
+    [1, 4, 2, 3, -1, 5]
+    >>> l1.print_sorted()
+    [-1, 1, 2, 3, 4, 5]
+    >>> print(l1)
+    [1, 4, 2, 3, -1, 5]
+
+Empty list
+    >>> l2 = MyList()
+    >>> print(l2)
+    []
+    >>> l2.print_sorted()
+    []
+
+
+Invalid arguments
+=================
+    >>> my_list = MyList()
+    >>> my_list.print_sorted([])
+    Traceback (most recent call last):
+    ...
+    TypeError: MyList.print_sorted() takes 1 positional argument but 2 were given
+
+Type test
+=========
+     >>> type(MyList())
+     <class '1-my_list.MyList'>
+
+     >>> isinstance(MyList, object)
+     True
+
+     >>> isinstance(MyList, list)
+     False
+
+     >>> issubclass(MyList, list)
+     True
+
+     >>> 'print_sorted' in dir(MyList)
+     True
