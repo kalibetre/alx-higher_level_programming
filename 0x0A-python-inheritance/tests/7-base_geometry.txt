@@ -1,0 +1,64 @@
+=========================================
+Usage of 1-my_list.py
+=========================================
+
+This module contains the class ``BaseGeometry``
+
+    >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+Doc String Test
+===============
+Module docstring:
+    >>> c = __import__("7-base_geometry").__doc__
+    >>> len(c) > 1
+    True
+
+Class docstring:
+    >>> f_a = __import__("7-base_geometry").BaseGeometry.area.__doc__
+    >>> len(f_a) > 1
+    True
+
+Function docstring:
+    >>> f_inv = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+    >>> len(f_inv) > 1
+    True
+
+
+
+Normal Usage
+============
+    >>> b = BaseGeometry()
+    >>> b.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+	>>> b.integer_validator("height", 3)
+
+    >>> b.integer_validator("width", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: width must be an integer
+	
+    >>> b.integer_validator("width", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: width must be an integer
+	
+    >>> b.integer_validator("width", -3)
+    Traceback (most recent call last):
+    ...
+    ValueError: width must be greater than 0
+
+
+Invalid arguments
+=================
+    >>> b.area(1, 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: area() takes 1 positional argument but 3 were given
+ 
+    >>> b.integer_validator("kak", 3, 4)
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() takes 3 positional arguments but 4 were given
