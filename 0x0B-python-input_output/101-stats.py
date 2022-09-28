@@ -15,7 +15,8 @@ regex = r"((?:\d{1,3}\.{0,1}){4}) - \[(.+)\] \"(.+)\" (\d{3}) (\d+)"
 def main():
     """main script function to read input from stdin and process it"""
     line_count = 0
-    er_codes = dict()
+    er_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
+                "403": 0, "404": 0, "405": 0, "500": 0}
     file_size = 0
 
     try:
@@ -23,7 +24,8 @@ def main():
             matches = re.finditer(regex, line)
             match = next(matches, None)
             if match is not None:
-                er_codes[match.group(4)] = er_codes.get(match.group(4), 0) + 1
+                if match.group(4) in er_codes:
+                    er_codes[match.group(4)] += 1
                 file_size += int(match.group(5))
                 line_count += 1
                 if line_count % 10 == 0:
