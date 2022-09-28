@@ -17,17 +17,19 @@ def main():
     chunk = []
     er_codes = dict()
     file_size = 0
-    while True:
-        try:
-            for line in sys.stdin:
-                chunk.append(line)
-                if len(chunk) == 10:
-                    file_size, er_codes = print_metrics(
-                        chunk, file_size, er_codes)
-                    chunk.clear()
-        except KeyboardInterrupt:
-            print_metrics(chunk, file_size, er_codes)
-            sys.exit(1)
+
+    try:
+        for line in sys.stdin:
+            chunk.append(line)
+            if len(chunk) == 10:
+                file_size, er_codes = print_metrics(
+                    chunk, file_size, er_codes)
+                chunk.clear()
+    except KeyboardInterrupt:
+        print_metrics(chunk, file_size, er_codes)
+        raise
+
+    print_metrics(chunk, file_size, er_codes)
 
 
 def print_metrics(chunk, file_size, er_codes):
