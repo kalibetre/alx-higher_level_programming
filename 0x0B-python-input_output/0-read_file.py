@@ -8,4 +8,5 @@ This Module contains a definition for read_file function
 def read_file(filename=""):
     """reads a text file encoded with utf-8"""
     with open(filename, "r", encoding="utf-8") as f:
-        print(*(f.readlines()), sep="")
+        for line in f:
+            print(line, end="")
