@@ -19,7 +19,7 @@ def main():
     try:
         for line in sys.stdin:
             matches = line.split()
-            if len(matches) == 9:
+            if len(matches) >= 2:
                 if matches[-2] in er_codes:
                     er_codes[matches[-2]] += 1
                 file_size += int(matches[-1])
