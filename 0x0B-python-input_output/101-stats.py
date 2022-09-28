@@ -6,10 +6,7 @@ computes a metrics
 """
 
 
-# import re
 import sys
-
-# regex = r"((?:\d{1,3}\.{0,1}){4}) - \[(.+)\] \"(.+)\" (\d{3}) (\d+)"
 
 
 def main():
@@ -21,8 +18,6 @@ def main():
 
     try:
         for line in sys.stdin:
-            # matches = re.finditer(regex, line)
-            # match = next(matches, None)
             matches = line.split()
             if len(matches) >= 2:
                 if matches[-2] in er_codes:
