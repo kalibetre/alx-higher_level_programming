@@ -45,7 +45,8 @@ def print_metrics(file_size, er_codes):
     """
     print(f"File size: {file_size}")
     for code in sorted(er_codes.items(), key=lambda x: x[0]):
-        print(f"{code[0]}: {code[1]}")
+        if code[1] > 0:
+            print(f"{code[0]}: {code[1]}")
 
 
 if __name__ == "__main__":
