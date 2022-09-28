@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module 3-to_json_string 
+"""Module 3-to_json_string
 
 This Module contains a definition for to_json_string function
 """
