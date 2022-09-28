@@ -22,5 +22,6 @@ class Student:
             return dict(filter(lambda x: x[0] in attrs, self.__dict__.items()))
 
     def reload_from_json(self, json):
+        """reloads attributes from json dict object"""
         for item in json.items():
             self.__dict__[item[0]] = item[1]
