@@ -6,10 +6,10 @@ computes a metrics
 """
 
 
-import re
+# import re
 import sys
 
-regex = r"((?:\d{1,3}\.{0,1}){4}) - \[(.+)\] \"(.+)\" (\d{3}) (\d+)"
+# regex = r"((?:\d{1,3}\.{0,1}){4}) - \[(.+)\] \"(.+)\" (\d{3}) (\d+)"
 
 
 def main():
@@ -21,12 +21,13 @@ def main():
 
     try:
         for line in sys.stdin:
-            matches = re.finditer(regex, line)
-            match = next(matches, None)
-            if match is not None:
-                if match.group(4) in er_codes:
-                    er_codes[match.group(4)] += 1
-                file_size += int(match.group(5))
+            # matches = re.finditer(regex, line)
+            # match = next(matches, None)
+            matches = line.split()
+            if len(matches) >= 2:
+                if matches[-2] in er_codes:
+                    er_codes[matches[-2]] += 1
+                file_size += int(matches[-1])
                 line_count += 1
                 if line_count % 10 == 0:
                     print_metrics(file_size, er_codes)
