@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Module 7-add_item
 
-This Module contains a definition for add_item function
+This Module contains a script to read and update a json file
 """
 
 from os import path
