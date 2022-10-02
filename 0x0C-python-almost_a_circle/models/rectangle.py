@@ -139,3 +139,10 @@ class Rectangle(Base):
         rows = ["#" * self.width for _ in range(self.height)]
         rec_str = "\n".join(rows)
         print(rec_str)
+
+    def __str__(self):
+        """returns a string representation of the rectangle"""
+        return (
+            f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
+            f"{self.width}/{self.height}"
+        )

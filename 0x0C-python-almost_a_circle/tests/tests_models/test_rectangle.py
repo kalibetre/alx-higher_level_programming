@@ -125,3 +125,16 @@ class TestRectangle(unittest.TestCase):
         r.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(output_str.getvalue(), "##\n##\n##\n")
+
+    def test_string_representation_of_rect(self):
+        self.assertEqual(
+            str(Rectangle(4, 5, 1, 2, 3)), "[Rectangle] (3) 1/2 - 4/5"
+        )
+        r = Rectangle(4, 5)
+        self.assertEqual(
+            str(r), f"[Rectangle] ({r.id}) 0/0 - 4/5"
+        )
+        r = Rectangle(4, 5, 3)
+        self.assertEqual(
+            str(r), f"[Rectangle] ({r.id}) 3/0 - 4/5"
+        )
