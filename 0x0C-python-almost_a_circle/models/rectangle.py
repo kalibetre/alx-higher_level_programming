@@ -111,5 +111,14 @@ class Rectangle(Base):
         self.__y = value
 
     def validate_int(self, name, value):
+        """validates an int variable
+
+        Args:
+            name (str): name of the variable
+            value (any): value to be checked
+
+        Raises:
+            TypeError: raised if value is not an int
+        """
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
