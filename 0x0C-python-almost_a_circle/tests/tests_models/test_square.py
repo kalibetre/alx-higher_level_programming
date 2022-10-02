@@ -170,7 +170,7 @@ class TestSquare(unittest.TestCase):
         )
 
     def test_dictionary_representation(self):
-        s = Square(10, 1, 9)
+        s = Square(10, 1, 9, 1)
         s_dict = s.to_dictionary()
         s_expected_dict = {'x': 1, 'y': 9, 'id': 1, 'size': 10}
         self.assertEqual(s_dict, s_expected_dict)

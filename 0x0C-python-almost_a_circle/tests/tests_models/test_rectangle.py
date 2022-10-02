@@ -185,7 +185,7 @@ class TestRectangle(unittest.TestCase):
         )
 
     def test_dictionary_representation(self):
-        r1 = Rectangle(10, 2, 1, 9)
+        r1 = Rectangle(10, 2, 1, 9, 1)
         r1_dict = r1.to_dictionary()
         r1_expected_dict = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
         self.assertEqual(r1_dict, r1_expected_dict)
