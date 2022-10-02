@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Module base
+"""Module rectangle
 
-This Module contains a definition for Base Class
+This Module contains a definition for Rectangle Class
 """
 
 from models.base import Base
