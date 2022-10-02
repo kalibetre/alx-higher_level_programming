@@ -7,6 +7,7 @@ import unittest
 
 import pycodestyle
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class TestBase(unittest.TestCase):
@@ -44,3 +45,19 @@ class TestBase(unittest.TestCase):
         """tests for invalid arguments"""
         with self.assertRaises(TypeError):
             Base(1, 2)
+
+    def test_to_json_string_with_none_and_empty_list(self):
+        """tests to json string with None and empty list"""
+        json_str = Base.to_json_string([])
+        self.assertEqual(json_str, '[]')
+        json_str = Base.to_json_string(None)
+        self.assertEqual(json_str, '[]')
+
+    def test_to_json_string(self):
+        """tests to json string with valid data"""
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r1_dict = r1.to_dictionary()
+        json_str = Base.to_json_string([r1_dict])
+        self.assertEqual(
+            json_str, '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
+        )
