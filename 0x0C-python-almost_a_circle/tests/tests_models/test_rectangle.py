@@ -3,6 +3,8 @@
 
 This Module contains a tests for Rectangle Class
 """
+import io
+import sys
 import unittest
 
 import pycodestyle
@@ -105,3 +107,21 @@ class TestRectangle(unittest.TestCase):
         """tests that area function returns the correct value"""
         r = Rectangle(10, 10)
         self.assertEqual(r.area(), 100)
+
+    def test_display_one_by_one_rect(self):
+        """test if display method works for a one by one rect"""
+        r = Rectangle(1, 1)
+        output_str = io.StringIO()
+        sys.stdout = output_str
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(output_str.getvalue(), "#\n")
+
+    def test_display_two_by_three_rect(self):
+        """test if display method works for a two by three rect"""
+        r = Rectangle(2, 3)
+        output_str = io.StringIO()
+        sys.stdout = output_str
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(output_str.getvalue(), "##\n##\n##\n")
