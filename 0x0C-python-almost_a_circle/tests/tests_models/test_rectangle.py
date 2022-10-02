@@ -126,6 +126,24 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(output_str.getvalue(), "##\n##\n##\n")
 
+    def test_display_rect_with_offset(self):
+        """test if a rectangle with an offset is displayed correctly"""
+        r = Rectangle(2, 3, 2, 2)
+        output_str = io.StringIO()
+        sys.stdout = output_str
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(output_str.getvalue(), "\n\n  ##\n  ##\n  ##\n")
+
+    def test_display_rect_with_one_side_offset(self):
+        """test if a rectangle with a one side offset is displayed correctly"""
+        r = Rectangle(3, 2, 1, 0)
+        output_str = io.StringIO()
+        sys.stdout = output_str
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(output_str.getvalue(), " ###\n ###\n")
+
     def test_string_representation_of_rect(self):
         self.assertEqual(
             str(Rectangle(4, 5, 1, 2, 3)), "[Rectangle] (3) 1/2 - 4/5"
