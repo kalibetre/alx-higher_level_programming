@@ -133,11 +133,7 @@ class Rectangle(Base):
 
     def display(self):
         """prints the rectangle instance with #"""
-        rec_str = ""
-        if (self.width == 0 or self.height == 0):
-            return rec_str
-        rows = ["#" * self.width for _ in range(self.height)]
-        rec_str = "\n".join(rows)
+        rec_str = "\n".join(["#" * self.width for _ in range(self.height)])
         print(rec_str)
 
     def __str__(self):
