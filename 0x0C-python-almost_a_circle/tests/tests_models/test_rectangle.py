@@ -183,3 +183,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(
             str(r), f"[Rectangle] ({r.id}) 3/0 - 4/5"
         )
+
+    def test_dictionary_representation(self):
+        r1 = Rectangle(10, 2, 1, 9)
+        r1_dict = r1.to_dictionary()
+        r1_expected_dict = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(r1_dict, r1_expected_dict)

@@ -168,3 +168,9 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(
             str(s), f"[Square] ({s.id}) 5/3 - 4"
         )
+
+    def test_dictionary_representation(self):
+        s = Square(10, 1, 9)
+        s_dict = s.to_dictionary()
+        s_expected_dict = {'x': 1, 'y': 9, 'id': 1, 'size': 10}
+        self.assertEqual(s_dict, s_expected_dict)
