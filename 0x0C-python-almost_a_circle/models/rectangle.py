@@ -42,6 +42,9 @@ class Rectangle(Base):
         Args:
             value (int): width
         """
+        self.validate_int("width", value)
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -60,6 +63,9 @@ class Rectangle(Base):
         Args:
             value (int): height
         """
+        self.validate_int("height", value)
+        if value <= 0:
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
@@ -78,6 +84,9 @@ class Rectangle(Base):
         Args:
             value (int): x coord
         """
+        self.validate_int("x", value)
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
@@ -96,4 +105,11 @@ class Rectangle(Base):
         Args:
             value (int): y coord
         """
+        self.validate_int("y", value)
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
+
+    def validate_int(self, name, value):
+        if type(value) is not int:
+            raise TypeError(f"{name} must be an integer")
