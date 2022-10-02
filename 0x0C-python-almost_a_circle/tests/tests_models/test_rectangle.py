@@ -54,26 +54,33 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.y, 40)
 
     def test_non_int_width_raise_error(self):
+        """tests wether type error is raised for non int width property"""
         with self.assertRaises(TypeError) as e:
             Rectangle(10.2, 10)
         self.assertEqual(str(e.exception), "width must be an integer")
 
     def test_non_int_height_raise_error(self):
+        """tests wether type error is raised for non int height property"""
         with self.assertRaises(TypeError) as e:
             Rectangle(10, True)
         self.assertEqual(str(e.exception), "height must be an integer")
 
     def test_non_int_x_raise_error(self):
+        """tests wether type error is raised for non int x property"""
         with self.assertRaises(TypeError) as e:
             Rectangle(10, 10, {})
         self.assertEqual(str(e.exception), "x must be an integer")
 
     def test_non_int_y_raise_error(self):
+        """tests wether type error is raised for non int y property"""
         with self.assertRaises(TypeError) as e:
             Rectangle(10, 10, 2, 2.3)
         self.assertEqual(str(e.exception), "y must be an integer")
 
     def test_width_and_height_must_be_non_zero_positive(self):
+        """tests wether value error exception is raised for negative
+        width and height values
+        """
         with self.assertRaises(ValueError) as e:
             Rectangle(-10, 10)
         self.assertEqual(str(e.exception), "width must be > 0")
@@ -83,6 +90,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(e.exception), "height must be > 0")
 
     def test_coordinates_must_be_positive(self):
+        """tests wether value error exception is raised for negative
+        coordinates
+        """
         with self.assertRaises(ValueError) as e:
             Rectangle(10, 10, -1)
         self.assertEqual(str(e.exception), "x must be >= 0")
