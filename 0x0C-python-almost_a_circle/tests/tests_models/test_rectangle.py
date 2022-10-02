@@ -144,7 +144,7 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(output_str.getvalue(), " ###\n ###\n")
 
-    def test_update_of_rect(self):
+    def test_update_of_rect_via_args(self):
         r1 = Rectangle(10, 10, 10, 10)
         r1.update(89)
         self.assertEqual(str(r1), "[Rectangle] (89) 10/10 - 10/10")
@@ -160,6 +160,16 @@ class TestRectangle(unittest.TestCase):
 
         r1.update(89, 2, 3, 4, 5)
         self.assertEqual(str(r1), "[Rectangle] (89) 4/5 - 2/3")
+
+    def test_update_of_rect_when_args_and_kwargs_exist(self):
+        r1 = Rectangle(10, 10)
+        r1.update(89, 20, x=10, y=10)
+        self.assertEqual(str(r1), "[Rectangle] (89) 0/0 - 20/10")
+
+    def test_update_of_rect_when_only_kwargs_exist(self):
+        r1 = Rectangle(10, 10)
+        r1.update(id=89, width=20, height=20, x=10, y=10)
+        self.assertEqual(str(r1), "[Rectangle] (89) 10/10 - 20/20")
 
     def test_string_representation_of_rect(self):
         self.assertEqual(

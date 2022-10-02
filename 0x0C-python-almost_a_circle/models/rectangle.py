@@ -139,19 +139,31 @@ class Rectangle(Base):
             print(*[' ' for _ in range(self.x)], sep='', end='')
             print(*["#" for _ in range(self.width)], sep='')
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """updates a rectangle instance"""
-        for i, value in enumerate(args):
-            if i == 0:
-                self.id = value
-            elif i == 1:
-                self.width = value
-            elif i == 2:
-                self.height = value
-            elif i == 3:
-                self.x = value
-            elif i == 4:
-                self.y = value
+        if args is not None and len(args) > 0:
+            for i, value in enumerate(args):
+                if i == 0:
+                    self.id = value
+                elif i == 1:
+                    self.width = value
+                elif i == 2:
+                    self.height = value
+                elif i == 3:
+                    self.x = value
+                elif i == 4:
+                    self.y = value
+        else:
+            if "id" in kwargs:
+                self.id = kwargs["id"]
+            if "width" in kwargs:
+                self.width = kwargs["width"]
+            if "height" in kwargs:
+                self.height = kwargs["height"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
 
     def __str__(self):
         """returns a string representation of the rectangle"""
