@@ -90,3 +90,8 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             Rectangle(10, 10, 2, -3)
         self.assertEqual(str(e.exception), "y must be >= 0")
+
+    def test_area_of_rect(self):
+        """tests that area function returns the correct value"""
+        r = Rectangle(10, 10)
+        self.assertEqual(r.area(), 100)

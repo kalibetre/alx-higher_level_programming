@@ -122,3 +122,11 @@ class Rectangle(Base):
         """
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
+
+    def area(self):
+        """calculates the area of the rectangle
+
+        Returns:
+            int: area of rect
+        """
+        return self.width * self.height
