@@ -4,6 +4,8 @@
 This Module contains a definition for Base Class
 """
 import json
+from random import randint
+import turtle
 
 
 class Base:
@@ -114,3 +116,58 @@ class Base:
                 return elms
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draws a list of rectangles and squares using turtle library"""
+        wn = turtle.Screen()
+        wn.bgcolor("white")
+        wn.title("ALX Python Full Circle")
+
+        colors = [
+            "gold", "orange", "red", "maroon", "violet",
+            "magenta", "purple", "navy", "blue", "skyblue", "cyan",
+            "turquoise", "lightgreen", "green", "darkgreen",
+            "chocolate", "brown", "black", "gray"
+        ]
+        for rect in list_rectangles:
+            pencolor = colors[randint(0, len(colors) - 1)]
+            fillcolor = pencolor
+            Base.draw_obj("Rectangle", rect, pencolor, fillcolor)
+        for square in list_squares:
+            pencolor = colors[randint(0, len(colors) - 1)]
+            fillcolor = pencolor
+            Base.draw_obj("Square", square, pencolor, fillcolor)
+
+        turtle.done()
+
+    @staticmethod
+    def draw_obj(type, obj, pencolor, fillcolor):
+        """Draws a single object using turtle library"""
+        props = obj.to_dictionary()
+        x = props["x"]
+        y = props["y"]
+        width = None
+        height = None
+        if type == "Rectangle":
+            width = props["width"]
+            height = props["height"]
+        else:
+            width = props["size"]
+            height = width
+
+        turtle.penup()
+        turtle.begin_fill()
+        turtle.color(pencolor)
+        turtle.fillcolor(fillcolor)
+        turtle.setpos(x, y)
+        turtle.pendown()
+        turtle.forward(width)
+        turtle.right(90)
+        turtle.forward(height)
+        turtle.right(90)
+        turtle.forward(width)
+        turtle.right(90)
+        turtle.forward(height)
+        turtle.right(90)
+        turtle.end_fill()
