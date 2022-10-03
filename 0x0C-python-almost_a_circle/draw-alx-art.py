@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Module base
+"""Module draw-alx-art
 
-This Module contains a definition for Base Class
+This Module contains a script to generate an ALX colorful art
 """
 from models.base import Base
 from models.rectangle import Rectangle
-from models.square import Square
 
 if __name__ == "__main__":
     list_rectangles = []
