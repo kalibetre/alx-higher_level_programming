@@ -99,7 +99,7 @@ class Base:
                         obj_dict = {
                             "id": row[0],
                             "width": int(row[1]),
-                            "heigh": int(row[2]),
+                            "height": int(row[2]),
                             "x": int(row[3]),
                             "y": int(row[4]),
                         }
