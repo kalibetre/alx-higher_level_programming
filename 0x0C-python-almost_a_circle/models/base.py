@@ -42,12 +42,14 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """loads object from json string"""
         if json_string is None or len(json_string) == 0:
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
+        """creates an object from a dictionary of attributes"""
         obj = None
         if cls.__name__ == "Rectangle":
             obj = cls(1, 1)
@@ -58,6 +60,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """loads objects from a json file"""
         try:
             with open(f"{cls.__name__}.json", "r") as f:
                 elms = []
