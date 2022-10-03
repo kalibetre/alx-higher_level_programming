@@ -112,7 +112,7 @@ class Base:
                         }
                     elms.append(cls.create(**obj_dict))
                 return elms
-        except FileNotFoundError:
+        except Exception:
             return []
 
     @staticmethod
