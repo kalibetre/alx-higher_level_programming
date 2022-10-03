@@ -3,25 +3,20 @@
 
 This Module contains a tests for Base Class
 """
+import inspect
 import os
 import unittest
 
 import pycodestyle
-from models.base import Base
+from models import base
 from models.rectangle import Rectangle
 from models.square import Square
 
+Base = base.Base
 
-class TestBase(unittest.TestCase):
-    """Test cases for Base Class"""
 
-    def tearDown(self) -> None:
-        temp_files = ["Rectangle.json", "Rectangle.csv"]
-        for file in temp_files:
-            try:
-                os.remove(file)
-            except OSError:
-                pass
+class TestBaseDocsAndStyle(unittest.TestCase):
+    """Tests Base class for documentation and style conformance"""
 
     def test_pycodestyle(self):
         """Tests compliance with pycodestyle"""
@@ -29,6 +24,37 @@ class TestBase(unittest.TestCase):
         result = style.check_files(
             ["models/base.py", "tests/tests_models/test_base.py"])
         self.assertEqual(result.total_errors, 0)
+
+    def test_module_docstring(self):
+        """Tests whether the module is documented"""
+        self.assertTrue(len(base.__doc__) >= 1)
+
+    def test_class_docstring(self):
+        """Tests whether the class is documented"""
+        self.assertTrue(len(Base.__doc__) >= 1)
+
+    def test_methods_docstring(self):
+        """Tests whether the class methods are documented"""
+        funcs = inspect.getmembers(Base, inspect.isfunction)
+        for func in funcs:
+            self.assertTrue(len(func.__doc__) >= 1)
+
+    def test_class_name(self):
+        """Test whether the class name is correct"""
+        self.assertEqual(Base.__name__, "Base")
+
+
+class TestBase(unittest.TestCase):
+    """Test cases for Base Class"""
+
+    def tearDown(self) -> None:
+        """removes temporary files used for testing"""
+        temp_files = ["Rectangle.json", "Rectangle.csv"]
+        for file in temp_files:
+            try:
+                os.remove(file)
+            except OSError:
+                pass
 
     def test_initial_id_set_to_one(self):
         """Tests if initial value of id is set to 1"""

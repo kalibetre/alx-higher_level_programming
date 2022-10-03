@@ -3,16 +3,19 @@
 
 This Module contains a tests for Square Class
 """
+import inspect
 import io
 import sys
 import unittest
 
 import pycodestyle
-from models.square import Square
+from models import square
+
+Square = square.Square
 
 
-class TestSquare(unittest.TestCase):
-    """Test cases for Square Class"""
+class TestSquareDocsAndStyle(unittest.TestCase):
+    """Tests Base class for documentation and style conformance"""
 
     def test_pycodestyle(self):
         """Tests compliance with pycodestyle"""
@@ -20,6 +23,28 @@ class TestSquare(unittest.TestCase):
         result = style.check_files(
             ["models/square.py", "tests/tests_models/test_square.py"])
         self.assertEqual(result.total_errors, 0)
+
+    def test_module_docstring(self):
+        """Tests whether the module is documented"""
+        self.assertTrue(len(square.__doc__) >= 1)
+
+    def test_class_docstring(self):
+        """Tests whether the class is documented"""
+        self.assertTrue(len(Square.__doc__) >= 1)
+
+    def test_methods_docstring(self):
+        """Tests whether the class methods are documented"""
+        funcs = inspect.getmembers(Square, inspect.isfunction)
+        for func in funcs:
+            self.assertTrue(len(func.__doc__) >= 1)
+
+    def test_class_name(self):
+        """Test whether the class name is correct"""
+        self.assertEqual(Square.__name__, "Square")
+
+
+class TestSquare(unittest.TestCase):
+    """Test cases for Square Class"""
 
     def test_private_vars(self):
         """tests for private variables"""

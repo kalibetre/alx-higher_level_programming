@@ -3,16 +3,20 @@
 
 This Module contains a tests for Rectangle Class
 """
+import inspect
 import io
 import sys
 import unittest
+from curses.textpad import rectangle
 
 import pycodestyle
-from models.rectangle import Rectangle
+from models import rectangle
+
+Rectangle = rectangle.Rectangle
 
 
-class TestRectangle(unittest.TestCase):
-    """Test cases for Rectangle Class"""
+class TestRectangleDocsAndStyle(unittest.TestCase):
+    """Tests Rectangle class for documentation and style conformance"""
 
     def test_pycodestyle(self):
         """Tests compliance with pycodestyle"""
@@ -20,6 +24,28 @@ class TestRectangle(unittest.TestCase):
         result = style.check_files(
             ["models/rectangle.py", "tests/tests_models/test_rectangle.py"])
         self.assertEqual(result.total_errors, 0)
+
+    def test_module_docstring(self):
+        """Tests whether the module is documented"""
+        self.assertTrue(len(rectangle.__doc__) >= 1)
+
+    def test_class_docstring(self):
+        """Tests whether the class is documented"""
+        self.assertTrue(len(rectangle.__doc__) >= 1)
+
+    def test_methods_docstring(self):
+        """Tests whether the class methods are documented"""
+        funcs = inspect.getmembers(Rectangle, inspect.isfunction)
+        for func in funcs:
+            self.assertTrue(len(func.__doc__) >= 1)
+
+    def test_class_name(self):
+        """Test whether the class name is correct"""
+        self.assertEqual(Rectangle.__name__, "Rectangle")
+
+
+class TestRectangle(unittest.TestCase):
+    """Test cases for Rectangle Class"""
 
     def test_private_vars(self):
         """tests for private variables"""
