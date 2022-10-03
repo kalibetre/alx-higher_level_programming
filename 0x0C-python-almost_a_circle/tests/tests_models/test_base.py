@@ -8,6 +8,7 @@ import unittest
 import pycodestyle
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -102,3 +103,19 @@ class TestBase(unittest.TestCase):
         self.assertEqual(list_output, [])
         list_output = Rectangle.from_json_string("")
         self.assertEqual(list_output, [])
+
+    def test_create_class_method(self):
+        """test if objects are returned from a dictionary"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertFalse(r1 is r2)
+        self.assertFalse(r1 == r2)
+        self.assertEqual(r1.to_dictionary(), r2.to_dictionary())
+
+        s1 = Square(3, 1)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertFalse(s1 is s2)
+        self.assertFalse(s1 == s2)
+        self.assertEqual(s1.to_dictionary(), s2.to_dictionary())
