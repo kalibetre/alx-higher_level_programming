@@ -56,6 +56,19 @@ class TestBase(unittest.TestCase):
             except OSError:
                 pass
 
+    def test_invalid_args(self):
+        """tests for invalid arguments"""
+        with self.assertRaises(TypeError):
+            Base(1, 2)
+
+    def test_private_var(self):
+        """tests for private variables"""
+        with self.assertRaises(AttributeError):
+            Base().__nb_objects
+
+        with self.assertRaises(AttributeError):
+            Base().nb_objects
+
     def test_initial_id_set_to_one(self):
         """Tests if initial value of id is set to 1"""
         self.assertTrue(Base(), self.id == 1)
@@ -70,16 +83,6 @@ class TestBase(unittest.TestCase):
         b1 = Base()
         b2 = Base()
         self.assertEqual(b2.id - b1.id, 1)
-
-    def test_private_var(self):
-        """tests for private variables"""
-        with self.assertRaises(AttributeError):
-            Base().__nb_objects
-
-    def test_invalid_args(self):
-        """tests for invalid arguments"""
-        with self.assertRaises(TypeError):
-            Base(1, 2)
 
     def test_to_json_string_with_none_and_empty_list(self):
         """tests to json string with None and empty list"""

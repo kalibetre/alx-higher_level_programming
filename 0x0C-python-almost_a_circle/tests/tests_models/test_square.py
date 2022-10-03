@@ -46,6 +46,11 @@ class TestSquareDocsAndStyle(unittest.TestCase):
 class TestSquare(unittest.TestCase):
     """Test cases for Square Class"""
 
+    def test_invalid_args(self):
+        """tests for invalid arguments"""
+        with self.assertRaises(TypeError):
+            Square()
+
     def test_private_vars(self):
         """tests for private variables"""
         with self.assertRaises(AttributeError):
@@ -56,11 +61,6 @@ class TestSquare(unittest.TestCase):
             Square(10, 10).__x
         with self.assertRaises(AttributeError):
             Square(10, 10).__y
-
-    def test_invalid_args(self):
-        """tests for invalid arguments"""
-        with self.assertRaises(TypeError):
-            Square()
 
     def test_default_initialization_of_properties(self):
         """tests initialization of properties"""

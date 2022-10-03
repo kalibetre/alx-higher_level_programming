@@ -47,6 +47,13 @@ class TestRectangleDocsAndStyle(unittest.TestCase):
 class TestRectangle(unittest.TestCase):
     """Test cases for Rectangle Class"""
 
+    def test_invalid_args(self):
+        """tests for invalid arguments"""
+        with self.assertRaises(TypeError):
+            Rectangle()
+        with self.assertRaises(TypeError):
+            Rectangle(10)
+
     def test_private_vars(self):
         """tests for private variables"""
         with self.assertRaises(AttributeError):
@@ -57,13 +64,6 @@ class TestRectangle(unittest.TestCase):
             Rectangle(10, 10).__x
         with self.assertRaises(AttributeError):
             Rectangle(10, 10).__y
-
-    def test_invalid_args(self):
-        """tests for invalid arguments"""
-        with self.assertRaises(TypeError):
-            Rectangle()
-        with self.assertRaises(TypeError):
-            Rectangle(10)
 
     def test_default_initialization_of_properties(self):
         """tests initialization of properties"""
