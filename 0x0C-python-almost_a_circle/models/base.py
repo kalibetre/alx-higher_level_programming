@@ -97,7 +97,7 @@ class Base:
                 for row in r:
                     if cls.__name__ == "Rectangle":
                         obj_dict = {
-                            "id": row[0],
+                            "id": int(row[0]),
                             "width": int(row[1]),
                             "height": int(row[2]),
                             "x": int(row[3]),
@@ -105,7 +105,7 @@ class Base:
                         }
                     elif cls.__name__ == "Square":
                         obj_dict = {
-                            "id": row[0],
+                            "id": int(row[0]),
                             "size": int(row[1]),
                             "x": int(row[2]),
                             "y": int(row[3]),
