@@ -157,6 +157,13 @@ class TestBase(unittest.TestCase):
         self.assertFalse(s1 == s2)
         self.assertEqual(s1.to_dictionary(), s2.to_dictionary())
 
+    def test_load_from_file_raises_exception(self):
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        self.assertEqual(Rectangle.load_from_file(), [])
+
     def test_load_from_file(self):
         """tests the load from file class method"""
         r1 = Rectangle(10, 7, 2, 8)
