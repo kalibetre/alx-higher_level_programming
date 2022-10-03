@@ -119,3 +119,17 @@ class TestBase(unittest.TestCase):
         self.assertFalse(s1 is s2)
         self.assertFalse(s1 == s2)
         self.assertEqual(s1.to_dictionary(), s2.to_dictionary())
+
+    def test_load_from_file(self):
+        """tests the load from file class method"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+
+        self.assertEqual(len(list_rectangles_output), 2)
+        self.assertEqual(r1.to_dictionary(),
+                         list_rectangles_input[0].to_dictionary())
+        self.assertEqual(r2.to_dictionary(),
+                         list_rectangles_input[1].to_dictionary())

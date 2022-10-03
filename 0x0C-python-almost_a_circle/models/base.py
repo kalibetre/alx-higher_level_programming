@@ -55,3 +55,15 @@ class Base:
             obj = cls(1)
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        try:
+            with open(f"{cls.__name__}.json", "r") as f:
+                elms = []
+                objs = cls.from_json_string(f.read())
+                for obj in objs:
+                    elms.append(cls.create(**obj))
+                return elms
+        except FileNotFoundError:
+            return []
