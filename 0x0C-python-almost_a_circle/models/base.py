@@ -100,8 +100,10 @@ class Base:
                 r = csv.reader(f)
                 elms = []
                 for row in r:
-                    obj_dict = {obj_dict[key]: row[idx]
-                                for idx, key in enumerate(keys)}
+                    obj_dict = {
+                        key: int(row[idx])
+                        for (idx, key) in enumerate(keys)
+                    }
                     elms.append(cls.create(**obj_dict))
                 return elms
         except Exception:
