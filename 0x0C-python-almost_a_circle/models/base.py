@@ -79,16 +79,13 @@ class Base:
         """saves the list objects to a csv file"""
         with open(f"{cls.__name__}.csv", "w", newline='') as f:
             wr = csv.writer(f)
-            if list_objs is None:
-                f.write("")
-            else:
-                for ele in list_objs:
-                    if cls.__name__ == "Rectangle":
-                        wr.writerow(
-                            [ele.id, ele.width, ele.height, ele.x, ele.y]
-                        )
-                    else:
-                        wr.writerow([ele.id, ele.size, ele.x, ele.y])
+            for ele in list_objs:
+                if cls.__name__ == "Rectangle":
+                    wr.writerow(
+                        [ele.id, ele.width, ele.height, ele.x, ele.y]
+                    )
+                elif cls.__name__ == "Square":
+                    wr.writerow([ele.id, ele.size, ele.x, ele.y])
 
     @classmethod
     def load_from_file_csv(cls):
@@ -98,16 +95,21 @@ class Base:
                 r = csv.reader(f)
                 elms = []
                 for row in r:
-                    obj_dict = {"id": row[0], }
                     if cls.__name__ == "Rectangle":
-                        obj_dict["width"] = int(row[1])
-                        obj_dict["height"] = int(row[2])
-                        obj_dict["x"] = int(row[3])
-                        obj_dict["y"] = int(row[4])
-                    else:
-                        obj_dict["size"] = int(row[1])
-                        obj_dict["x"] = int(row[2])
-                        obj_dict["y"] = int(row[3])
+                        obj_dict = {
+                            "id": row[0],
+                            "width": int(row[1]),
+                            "heigh": int(row[2]),
+                            "x": int(row[3]),
+                            "y": int(row[4]),
+                        }
+                    elif cls.__name__ == "Square":
+                        obj_dict = {
+                            "id": row[0],
+                            "size": int(row[1]),
+                            "x": int(row[2]),
+                            "y": int(row[3]),
+                        }
                     elms.append(cls.create(**obj_dict))
                 return elms
         except FileNotFoundError:
