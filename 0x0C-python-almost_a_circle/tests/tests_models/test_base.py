@@ -61,3 +61,27 @@ class TestBase(unittest.TestCase):
         self.assertEqual(
             json_str, '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
         )
+
+    def test_save_to_file(self):
+        """test whether the static method save_to_file saves the correct
+        json representation to file
+        """
+        r1 = Rectangle(10, 7, 3, 2, 1)
+        r2 = Rectangle(2, 4, 0, 0, 2)
+
+        Rectangle.save_to_file([r1, r2])
+
+        expected_str = (
+            '[{"id": 1, "width": 10, "height": 7, "x": 3, "y": 2}, '
+            '{"id": 2, "width": 2, "height": 4, "x": 0, "y": 0}]')
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), expected_str)
+
+    def test_save_to_file_empty(self):
+        """test whether the static method save_to_file saves the correct
+        json representation to file for None value
+        """
+        Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
