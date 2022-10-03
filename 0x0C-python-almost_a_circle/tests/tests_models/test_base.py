@@ -206,3 +206,10 @@ class TestBase(unittest.TestCase):
                          list_rectangles_input[0].to_dictionary())
         self.assertEqual(s2.to_dictionary(),
                          list_rectangles_input[1].to_dictionary())
+
+    def test_csv_file_from_non_existing(self):
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        self.assertEqual(Square.load_from_file_csv(), [])
