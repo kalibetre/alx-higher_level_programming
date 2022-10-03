@@ -77,7 +77,7 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """saves the list objects to a csv file"""
-        with open(f"{cls.__name__}.csv", "w") as f:
+        with open(f"{cls.__name__}.csv", "w", newline='') as f:
             wr = csv.writer(f)
             if list_objs is None:
                 f.write("")
@@ -94,7 +94,7 @@ class Base:
     def load_from_file_csv(cls):
         """loads objects from a csv file"""
         try:
-            with open(f"{cls.__name__}.csv", "r") as f:
+            with open(f"{cls.__name__}.csv", "r", newline='') as f:
                 r = csv.reader(f)
                 elms = []
                 for row in r:
