@@ -171,6 +171,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(output_str.getvalue(), " ###\n ###\n")
 
     def test_update_of_rect_via_args(self):
+        """test update of rect via args"""
         r1 = Rectangle(10, 10, 10, 10)
         r1.update(89)
         self.assertEqual(str(r1), "[Rectangle] (89) 10/10 - 10/10")
@@ -188,16 +189,19 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(r1), "[Rectangle] (89) 4/5 - 2/3")
 
     def test_update_of_rect_when_args_and_kwargs_exist(self):
+        """test update of rect when both args and kwargs are passed"""
         r1 = Rectangle(10, 10)
         r1.update(89, 20, x=10, y=10)
         self.assertEqual(str(r1), "[Rectangle] (89) 0/0 - 20/10")
 
     def test_update_of_rect_when_only_kwargs_exist(self):
+        """test update of rect when only kwargs are passed"""
         r1 = Rectangle(10, 10)
         r1.update(id=89, width=20, height=20, x=10, y=10)
         self.assertEqual(str(r1), "[Rectangle] (89) 10/10 - 20/20")
 
     def test_string_representation_of_rect(self):
+        """test the string representation of rect"""
         self.assertEqual(
             str(Rectangle(4, 5, 1, 2, 3)), "[Rectangle] (3) 1/2 - 4/5"
         )
@@ -211,6 +215,7 @@ class TestRectangle(unittest.TestCase):
         )
 
     def test_dictionary_representation(self):
+        """test the dictionary representation"""
         r1 = Rectangle(10, 2, 1, 9, 1)
         r1_dict = r1.to_dictionary()
         r1_expected_dict = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}

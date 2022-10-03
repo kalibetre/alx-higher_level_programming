@@ -159,6 +159,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(s1.to_dictionary(), s2.to_dictionary())
 
     def test_load_from_file_raises_exception(self):
+        """tests for non existent file"""
         try:
             os.remove("Rectangle.json")
         except Exception:
@@ -180,6 +181,7 @@ class TestBase(unittest.TestCase):
                          list_rectangles_input[1].to_dictionary())
 
     def test_csv_file_io_rect(self):
+        """tests csv file io for rectangle"""
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         list_rectangles_input = [r1, r2]
@@ -194,6 +196,7 @@ class TestBase(unittest.TestCase):
                          list_rectangles_input[1].to_dictionary())
 
     def test_csv_file_io_sq(self):
+        """test csv file io for Square"""
         s1 = Square(10, 2, 8)
         s2 = Square(2)
         list_rectangles_input = [s1, s2]
@@ -208,6 +211,7 @@ class TestBase(unittest.TestCase):
                          list_rectangles_input[1].to_dictionary())
 
     def test_csv_file_from_non_existing(self):
+        """test csv file loading from non existent file"""
         try:
             os.remove("Square.json")
         except Exception:

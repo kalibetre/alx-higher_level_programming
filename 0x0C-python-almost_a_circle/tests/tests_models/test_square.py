@@ -158,6 +158,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(output_str.getvalue(), " ###\n ###\n ###\n")
 
     def test_update_of_rect_via_args(self):
+        """test the update of rect valves with args"""
         s1 = Square(10, 10, 10)
         s1.update(89)
         self.assertEqual(str(s1), "[Square] (89) 10/10 - 10")
@@ -171,17 +172,20 @@ class TestSquare(unittest.TestCase):
         s1.update(89, 2, 3, 4)
         self.assertEqual(str(s1), "[Square] (89) 3/4 - 2")
 
-    def test_update_of_rect_when_args_and_kwargs_exist(self):
+    def test_update_of_sqr_when_args_and_kwargs_exist(self):
+        """test update of square when args and kwargs are present"""
         s1 = Square(10)
         s1.update(89, 20, x=10, y=10)
         self.assertEqual(str(s1), "[Square] (89) 0/0 - 20")
 
-    def test_update_of_rect_when_only_kwargs_exist(self):
+    def test_update_of_sqr_when_only_kwargs_exist(self):
+        """test update of rect when kwargs are passed"""
         s1 = Square(10, 10)
         s1.update(id=89, size=20, x=10, y=10)
         self.assertEqual(str(s1), "[Square] (89) 10/10 - 20")
 
-    def test_string_representation_of_rect(self):
+    def test_string_representation_of_sqr(self):
+        """test string representation of rect"""
         self.assertEqual(
             str(Square(4, 1, 2, 3)), "[Square] (3) 1/2 - 4"
         )
@@ -195,6 +199,7 @@ class TestSquare(unittest.TestCase):
         )
 
     def test_dictionary_representation(self):
+        """test dictionary representation"""
         s = Square(10, 1, 9, 1)
         s_dict = s.to_dictionary()
         s_expected_dict = {'x': 1, 'y': 9, 'id': 1, 'size': 10}
