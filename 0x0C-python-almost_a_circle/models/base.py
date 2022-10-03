@@ -91,25 +91,17 @@ class Base:
     def load_from_file_csv(cls):
         """loads objects from a csv file"""
         try:
+            if cls.__name__ == "Rectangle":
+                keys = ["id", "width", "height", "x", "y"]
+            else:
+                keys = ["id", "size", "x", "y"]
+
             with open(f"{cls.__name__}.csv", "r", newline='') as f:
                 r = csv.reader(f)
                 elms = []
                 for row in r:
-                    if cls.__name__ == "Rectangle":
-                        obj_dict = {
-                            "id": int(row[0]),
-                            "width": int(row[1]),
-                            "height": int(row[2]),
-                            "x": int(row[3]),
-                            "y": int(row[4]),
-                        }
-                    elif cls.__name__ == "Square":
-                        obj_dict = {
-                            "id": int(row[0]),
-                            "size": int(row[1]),
-                            "x": int(row[2]),
-                            "y": int(row[3]),
-                        }
+                    obj_dict = {obj_dict[key]: row[idx]
+                                for idx, key in enumerate(keys)}
                     elms.append(cls.create(**obj_dict))
                 return elms
         except Exception:
