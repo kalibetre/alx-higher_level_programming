@@ -16,10 +16,12 @@ class TestBase(unittest.TestCase):
     """Test cases for Base Class"""
 
     def tearDown(self) -> None:
-        try:
-            os.remove("Rectangle.json")
-        except OSError:
-            pass
+        temp_files = ["Rectangle.json", "Rectangle.csv"]
+        for file in temp_files:
+            try:
+                os.remove(file)
+            except OSError:
+                pass
 
     def test_pycodestyle(self):
         """Tests compliance with pycodestyle"""
@@ -133,6 +135,20 @@ class TestBase(unittest.TestCase):
         list_rectangles_input = [r1, r2]
         Rectangle.save_to_file(list_rectangles_input)
         list_rectangles_output = Rectangle.load_from_file()
+
+        self.assertEqual(len(list_rectangles_output), 2)
+        self.assertEqual(r1.to_dictionary(),
+                         list_rectangles_input[0].to_dictionary())
+        self.assertEqual(r2.to_dictionary(),
+                         list_rectangles_input[1].to_dictionary())
+
+    def test_csv_file_io(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file_csv()
 
         self.assertEqual(len(list_rectangles_output), 2)
         self.assertEqual(r1.to_dictionary(),

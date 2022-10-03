@@ -70,3 +70,47 @@ class Base:
                 return elms
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """saves the list objects to a csv file"""
+        with open(f"{cls.__name__}.csv", "w") as f:
+            if list_objs is None:
+                f.write("")
+            else:
+                for ele in list_objs:
+                    ele_dict = dict(ele.to_dictionary())
+                    id = ele_dict["id"]
+                    x = ele_dict["x"]
+                    y = ele_dict["y"]
+                    if cls.__name__ == "Rectangle":
+                        width = ele_dict["width"]
+                        height = ele_dict["height"]
+                        f.write(f"{id},{width},{height},{x},{y}\n")
+                    else:
+                        size = ele_dict["size"]
+                        f.write(f"{id},{size},{x},{y}\n")
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """loads objects from a csv file"""
+        try:
+            with open(f"{cls.__name__}.csv", "r") as f:
+                elms = []
+                lines = f.readlines()
+                for line in lines:
+                    props = line.split(",")
+                    obj_dict = {"id": props[0]}
+                    if cls.__name__ == "Rectangle":
+                        obj_dict["width"] = int(props[1])
+                        obj_dict["height"] = int(props[2])
+                        obj_dict["x"] = int(props[3])
+                        obj_dict["y"] = int(props[4])
+                    else:
+                        obj_dict["size"] = int(props[1])
+                        obj_dict["x"] = int(props[2])
+                        obj_dict["y"] = int(props[3])
+                    elms.append(cls.create(**obj_dict))
+                return elms
+        except FileNotFoundError:
+            return []
