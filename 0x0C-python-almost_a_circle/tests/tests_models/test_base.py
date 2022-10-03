@@ -49,7 +49,8 @@ class TestBase(unittest.TestCase):
 
     def tearDown(self) -> None:
         """removes temporary files used for testing"""
-        temp_files = ["Rectangle.json", "Rectangle.csv"]
+        temp_files = ["Rectangle.json", "Rectangle.csv",
+                      "Square.json", "Square.csv"]
         for file in temp_files:
             try:
                 os.remove(file)
@@ -178,7 +179,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(r2.to_dictionary(),
                          list_rectangles_input[1].to_dictionary())
 
-    def test_csv_file_io(self):
+    def test_csv_file_io_rect(self):
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         list_rectangles_input = [r1, r2]
@@ -190,4 +191,18 @@ class TestBase(unittest.TestCase):
         self.assertEqual(r1.to_dictionary(),
                          list_rectangles_input[0].to_dictionary())
         self.assertEqual(r2.to_dictionary(),
+                         list_rectangles_input[1].to_dictionary())
+
+    def test_csv_file_io_sq(self):
+        s1 = Square(10, 2, 8)
+        s2 = Square(2)
+        list_rectangles_input = [s1, s2]
+
+        Square.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Square.load_from_file_csv()
+
+        self.assertEqual(len(list_rectangles_output), 2)
+        self.assertEqual(s1.to_dictionary(),
+                         list_rectangles_input[0].to_dictionary())
+        self.assertEqual(s2.to_dictionary(),
                          list_rectangles_input[1].to_dictionary())
