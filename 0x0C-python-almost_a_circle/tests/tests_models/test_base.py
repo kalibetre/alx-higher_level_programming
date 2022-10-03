@@ -3,6 +3,7 @@
 
 This Module contains a tests for Base Class
 """
+import os
 import unittest
 
 import pycodestyle
@@ -14,6 +15,12 @@ from models.square import Square
 class TestBase(unittest.TestCase):
     """Test cases for Base Class"""
 
+    def tearDown(self) -> None:
+        try:
+            os.remove("Rectangle.json")
+        except OSError:
+            pass
+
     def test_pycodestyle(self):
         """Tests compliance with pycodestyle"""
         style = pycodestyle.StyleGuide(quiet=False)
@@ -23,8 +30,7 @@ class TestBase(unittest.TestCase):
 
     def test_initial_id_set_to_one(self):
         """Tests if initial value of id is set to 1"""
-        b = Base()
-        self.assertEqual(b.id, 1)
+        self.assertTrue(Base(), self.id == 1)
 
     def test_custom_id(self):
         """tests assignment of custom id"""
