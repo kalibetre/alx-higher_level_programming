@@ -1,5 +1,5 @@
--- insert row into a table
+-- count rows with a condition of id equals 89
 SELECT COUNT(id)
 FROM first_table
 WHERE id=89 
-GROUP BY id
+GROUP BY id;
