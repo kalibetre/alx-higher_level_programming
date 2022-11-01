@@ -1,2 +1,2 @@
--- create a table named first_table
+-- show full description of a table
 SHOW CREATE TABLE first_table;
