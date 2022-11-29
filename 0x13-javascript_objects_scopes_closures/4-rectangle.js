@@ -8,9 +8,11 @@ class Rectangle {
   }
 
   print () {
-    console.log(
-      'X'.repeat(this.width).concat('\n').repeat(this.height).trimEnd('\n')
-    );
+    console.log(this.toString('X'));
+  }
+
+  toString (ch) {
+    return ch.repeat(this.width).concat('\n').repeat(this.height).trimEnd('\n');
   }
 
   rotate () {
