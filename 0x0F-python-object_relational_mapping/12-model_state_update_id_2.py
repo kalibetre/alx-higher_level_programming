@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""11-model_state_insert module
-contains a script to insert state to database
+"""12-model_state_update_id module
+contains a script to update state
 """
 from sys import argv
 
