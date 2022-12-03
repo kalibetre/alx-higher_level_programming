@@ -15,7 +15,7 @@ def list_all_states(session):
     Args:
         session (Session): sqlalchemey session
     """
-    for instance in session.query(State).all():
+    for instance in session.query(State).order_by(State.id):
         print(instance.id, instance.name, sep=": ")
 
 
