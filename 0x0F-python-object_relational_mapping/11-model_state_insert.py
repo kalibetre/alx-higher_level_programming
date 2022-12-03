@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 def insert_state(session, state_name):
-    """inserts a sample state by name
+    """inserts a state by name
 
     Args:
         session (Session): sqlalchemey session
