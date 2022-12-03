@@ -9,6 +9,11 @@ Base = declarative_base()
 
 
 class State(Base):
+    """States Model
+
+    Args:
+        Base (declarative): sqlalchemey declarative base
+    """
     __tablename__ = "states"
     id = Column(Integer, nullable=False, primary_key=True,
                 autoincrement=True, unique=True)
