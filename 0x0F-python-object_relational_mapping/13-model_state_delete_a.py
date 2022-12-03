@@ -17,7 +17,7 @@ def delete_matching_states(session, regex):
         regex (str): regex to mach
     """
     session.query(State).filter(
-        State.name.like('%{regex}%')).delete(synchronize_session=False)
+        State.name.like(f'%{regex}%')).delete(synchronize_session=False)
     session.commit()
 
 
