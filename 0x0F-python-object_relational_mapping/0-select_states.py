@@ -1,10 +1,20 @@
 #!/usr/bin/python3
+"""0-select_states module
+contains a script that lists all states from a given database
+"""
 from sys import argv
 
 import MySQLdb
 
 
 def list_all_states(username, password, db_name):
+    """lists all states from a database
+
+    Args:
+        username (str): mysql username
+        password (str): mysql password
+        db_name (str): the database name
+    """
     conn = MySQLdb.connect(
         host="localhost",
         port=3306,
