@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""1-filter_states module
-contains a script that lists all states with a name starting
-with N from a given database
+"""2-filter_states module
+contains a script that lists all states with a given name
+from a given database
 """
 from sys import argv
 
@@ -26,7 +26,8 @@ def list_all_states_filtered(username, password, db_name, state_name):
         charset="utf8"
     )
     cur = conn.cursor()
-    cur.execute(f"SELECT * FROM states WHERE name LIKE '{state_name}'")
+    cur.execute(
+        f"SELECT * FROM states WHERE name LIKE '{state_name}' ORDER BY id ASC")
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
