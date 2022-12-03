@@ -26,8 +26,10 @@ def list_all_states_filtered(username, password, db_name, state_name):
         charset="utf8"
     )
     cur = conn.cursor()
+
     cur.execute(
-        f"SELECT * FROM states WHERE name LIKE '{state_name}' ORDER BY id ASC")
+        "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC"
+        .format(state_name))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
@@ -36,7 +38,7 @@ def list_all_states_filtered(username, password, db_name, state_name):
 
 
 if __name__ == "__main__":
-    if (len(argv) - 1 >= 3):
+    if (len(argv) - 1 >= 4):
         list_all_states_filtered(
             username=argv[1],
             password=argv[2],
