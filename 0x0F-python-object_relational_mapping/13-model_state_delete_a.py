@@ -26,5 +26,5 @@ if __name__ == "__main__":
         argv[1], argv[2], argv[3]), pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    delete_matching_states(session, regex="Louisiana")
+    delete_matching_states(session, regex="a")
     session.close()
