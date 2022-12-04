@@ -20,7 +20,7 @@ def list_all_states_with_cities(session):
     for state in states:
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
-            print("\t{}: {}")
+            print("\t{}: {}".format(city.id, city.name))
 
 
 if __name__ == "__main__":
