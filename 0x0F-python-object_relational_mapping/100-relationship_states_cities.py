@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""14-model_city_fetch_by_state module
-contains a script to fetch cities from database
+"""100-relationship_states_cities module
+contains a script to test the relationship setup between state and cities
 """
 from sys import argv
 
@@ -10,7 +10,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-def print_all_cities(session):
+def create_state_with_cities(session):
+    """creates a state with cities and adds it to database
+
+    Args:
+        session (Session): sqlalchemy session
+    """
     california = State(name="California")
     california.cities = [City(name="San Francisco")]
     session.add(california)
@@ -23,5 +28,5 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    print_all_cities(session)
+    create_state_with_cities(session)
     session.close()
