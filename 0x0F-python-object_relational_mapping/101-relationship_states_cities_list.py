@@ -18,9 +18,9 @@ def list_all_states_with_cities(session):
     """
     states = session.query(State).order_by(State.id).all()
     for state in states:
-        print(f"{state.id}: {state.name}")
+        print("{}: {}".format(state.id, state.name))
         for city in state.cities:
-            print(f"    {city.id}: {city.name}")
+            print("\t{}: {}".format(city.id, city.name))
 
 
 if __name__ == "__main__":
