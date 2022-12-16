@@ -1,13 +1,19 @@
 #!/usr/bin/python3
-"""
-fetch https://alx-intranet.hbtn.io/status display response
-"""
-from urllib import request
+"""0-hbtn_status module"""
+
+import urllib.request
+
+
+def fetch_hbtn():
+    """fetches the hbtn intranet and displays information
+    """
+    with urllib.request.urlopen("https://alx-intranet.hbtn.io/status") as r:
+        html = r.read()
+        print("Body response:")
+        print(f"    - type: {type(html)}")
+        print(f"    - content: {html}")
+        print(f"    - utf8 content: {html.decode('utf-8')}")
+
 
 if __name__ == "__main__":
-    with request.urlopen("https://alx-intranet.hbtn.io/status") as response:
-        r = response.read()
-        print(
-            "Body response:\n\t- type: {}\n\t- content: \
-{}\n\t- utf8 content: {}"
-            .format(type(r), r, r.decode('utf-8')))
+    fetch_hbtn()
