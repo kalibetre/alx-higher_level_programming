@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""3-post_email module"""
+"""3-error_code module"""
 from sys import argv
-from urllib import error, parse, request
+from urllib import error, request
 
 if __name__ == "__main__":
     try:
