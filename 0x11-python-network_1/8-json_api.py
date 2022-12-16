@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""9-json_api module"""
+"""8-json_api module"""
 from sys import argv
 
 import requests
